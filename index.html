@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>To Do List App</title>
-</head>
-<body>
+    </head>
+    <body>
+
     <form>
-        <label for="task">Add your items</label>
-        <input name="task" id="task">
-        <button id="btn" type="button">Click me</button>
+        <label for="task"></label>
+        <input name="task" id="task" placeholder="Add a task">
+        <button id="btn" type="button">+</button>
+        <button id="btn-done" type="button">√</button>
         <output id="result"></output>
     </form>
+
+    <section id="task-section" class="task-done">
+        
+    </section>
 </body>
 <script src="test-helpers.js"></script>
 <script src="index.test.js"></script>
