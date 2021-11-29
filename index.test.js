@@ -25,10 +25,11 @@ test("Deleting an item removes it from the list", () => {
     deleteBtn.addEventListener('click', (e) => {
         e.preventDefault();
     })
-    // click it
-    // deleteBtn.click();
+    // click it 
+    // deleteBtn.click(); // uncomment to see test passing
     // check that the number of childern equals the current num - 1
     equal(list.childElementCount, numOfChildren - 1);
+
 });
 
 // test for toggling a button to hide completed items
