@@ -26,7 +26,7 @@ test("Deleting an item removes it from the list", () => {
         e.preventDefault();
     })
     // click it
-    deleteBtn.click();
+    // deleteBtn.click();
     // check that the number of childern equals the current num - 1
     equal(list.childElementCount, numOfChildren - 1);
 });
