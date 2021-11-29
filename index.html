@@ -10,16 +10,22 @@
     <body>
 
     <form>
-        <label for="task"></label>
-        <input name="task" id="task" placeholder="Add a task">
-        <button id="btn" type="button">+</button>
-        <button id="btn-done" type="button">√</button>
-        <output id="result"></output>
+        <label for="task">Add your items</label>
+        <input name="task" id="task">
+        <button id="add-btn" type="button">+</button>
+        <button id="complete-btn" type="button">√</button>
     </form>
 
-    <section id="task-section" class="task-done">
-        
-    </section>
+    <button id="filter-btn">Hide completed</button>
+
+    <output id="result"></output>
+        <div class="task-card">
+            <input class="task-added complete" type="text" value="New task" readonly>
+            <div class="controls">
+                <button class="delete-btn">Delete</button>
+            </div>
+        </div> 
+    </output>
 </body>
 <script src="test-helpers.js"></script>
 <script src="index.test.js"></script>
