@@ -11,9 +11,19 @@
     <form>
         <label for="task">Add your items</label>
         <input name="task" id="task">
-        <button id="btn" type="button">Click me</button>
-        <output id="result"></output>
+        <button id="btn" type="button">Click me</button>    
     </form>
+    
+    <button id="filter-btn">Hide completed</button>
+    
+    <output id="result">
+        <div class="task-card">
+            <input class="task" type="text" value="New task" readonly>
+            <div class="controls">
+                <button class="delete-btn">Delete</button>
+            </div>
+        </div> 
+    </output>
 </body>
 <script src="test-helpers.js"></script>
 <script src="index.test.js"></script>
