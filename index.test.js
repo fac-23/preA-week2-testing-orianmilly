@@ -15,7 +15,7 @@ test("Once a user adds an item, the result is shown", () => {
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
     // grab list
-    const list = document.querySelector('ul');
+    const list = document.querySelector('output');
     // find current num of ul child elements
     const numOfChildren = list.childElementCount;
     // grab the delete button
@@ -43,7 +43,7 @@ test("Toggling the filter hides completed tasks from the list", () => {
     filterBtn.click();
     // if the item has a classlist of 'completed-task' it should be hidden
     // get all list items as array
-    const allItems = Array.from(document.querySelectorAll('li'));
+    const allItems = Array.from(document.querySelectorAll('input.task'));
     // check they contain a classlist of 'completed-task' and a hidden attribute of true
     if (allItems.every(item => item.classList.contains('completed-task') && item.hidden === true)) {
         console.info("Pass: completed tasks are hidden")
