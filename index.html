@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>To Do List App</title>
-</head>
-<body>
+    </head>
+    <body>
+
     <form>
         <label for="task">Add your items</label>
         <input name="task" id="task">
-        <button id="btn" type="button">Click me</button>    
+
+        <button id="add-btn" type="button">+</button>
+        <button id="complete-btn" type="button">√</button>
     </form>
-    
+
     <button id="filter-btn">Hide completed</button>
-    
+
     <output id="result">
         <div class="task-card">
             <input class="task" type="text" value="New task" readonly>

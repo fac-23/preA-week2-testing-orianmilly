@@ -13,3 +13,4 @@ function deleteTask(e) {
     e.target.parentElement.parentElement.setAttribute("hidden", true);
 }
 
+
