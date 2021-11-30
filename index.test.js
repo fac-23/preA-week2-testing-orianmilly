@@ -58,6 +58,27 @@ test("Deleting an item removes it from the list", () => {
     equal(list.childElementCount, numOfChildren - 1);
 });
 
+
+// test for deleting an item from the to-do list
+test("Deleting an item removes it from the list", () => {
+    // grab list
+    const list = document.querySelector('output');
+    // find current num of ul child elements
+    const numOfChildren = list.childElementCount;
+    // grab the delete button
+    const deleteBtn = document.querySelector('.delete-btn');
+    // prevent page refresh on btn click
+    // I will move this into index.js when we start coding the app
+    deleteBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+    })
+    // click it
+    deleteBtn.click();
+    // check that the number of childern equals the current num - 1
+    equal(list.childElementCount, numOfChildren - 1);
+});
+
+
 // test for toggling a button to hide completed items
 test("Toggling the filter hides completed tasks from the list", () => {
     // grab the filter button
@@ -77,4 +98,6 @@ test("Toggling the filter hides completed tasks from the list", () => {
     } else {
         console.error("Fail: completed tasks are not hidden")
     };
+
   });
+
