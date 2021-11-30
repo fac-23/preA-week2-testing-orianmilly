@@ -11,22 +11,22 @@
 
     <form>
         <label for="task">Add your items</label>
-        <input name="task" id="task">
+        <input name="task" id="task" required>
 
-        <button id="add-btn" type="button">+</button>
+        <input id="add-btn" type="submit" value="+">
         <button id="complete-btn" type="button">√</button>
     </form>
 
     <button id="filter-btn">Hide completed</button>
 
     <output id="result">
-        <div class="task-card">
-            <input class="task" type="text" value="New task" readonly>
+        <!-- <div class="task-card">
+            <input class="task-new" type="text" value="New task" readonly>
             <div class="controls">
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             </div>
-        </div> 
+        </div>  -->
     </output>
 </body>
 <script src="index.js"></script>

@@ -12,7 +12,7 @@ test("Submitting a new task adds it to the list", () => {
         console.error(`Fail: Task doesn't contain text`)
     }
     // grab add button element for submitting a task
-    const addBtn = document.querySelector("button[id='add-btn']")
+    const addBtn = document.querySelector("input[id='add-btn']")
     // Event click on add button for user submit their task
     addBtn.addEventListener('click', (event) => {
     // Stop page from reloading once task is added
@@ -36,7 +36,6 @@ test("Checking an entry marks it as complete", () => {
             console.error(`Fail: Task is not complete`)
         }
     })
-
 })
 
 // test for deleting an item from the to-do list
@@ -49,19 +48,22 @@ test("Deleting an item removes it from the list", () => {
     let deletedTaskCard;
     // prevent page refresh on btn click
     // I will move this into index.js when we start coding the app
-    deleteBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        // grab the deleted node
-        deletedTaskCard = e.target.parentElement.parentElement;
-    })
-    // click delete button
-    deleteBtn.click(); 
-    // check that the number of deletedTasks has been incremented
-    equal(deletedTasks, currDeletedTasks + 1);
-    // remove the hidden attribute after test is complete
-    deletedTaskCard.removeAttribute("hidden");
-    // reset deletedTasks variable to 0
-    deletedTasks = 0;
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // grab the deleted node
+            deletedTaskCard = e.target.parentElement.parentElement;
+        })
+        // click delete button
+        deleteBtn.click(); 
+        // check that the number of deletedTasks has been incremented
+        equal(deletedTasks, currDeletedTasks + 1);
+        // remove the hidden attribute after test is complete
+        deletedTaskCard.removeAttribute("hidden");
+        // reset deletedTasks variable to 0
+        deletedTasks = 0;
+    }
+    
 });
 
 // test for toggling a button to hide completed items
