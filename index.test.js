@@ -41,21 +41,27 @@ test("Checking an entry marks it as complete", () => {
 
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
-    // grab list
-    const list = document.querySelector('output');
-    // find current num of ul child elements
-    const numOfChildren = list.childElementCount;
+    // grab current number of deleted tasks (global variable in index.js)
+    const currDeletedTasks = deletedTasks;
     // grab the delete button
     const deleteBtn = document.querySelector('.delete-btn');
+    // initiate variable to hold the deleted node
+    let deletedTaskCard;
     // prevent page refresh on btn click
     // I will move this into index.js when we start coding the app
     deleteBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        // grab the deleted node
+        deletedTaskCard = e.target.parentElement.parentElement;
     })
-    // click it
-    deleteBtn.click();
-    // check that the number of childern equals the current num - 1
-    equal(list.childElementCount, numOfChildren - 1);
+    // click delete button
+    deleteBtn.click(); 
+    // check that the number of deletedTasks has been incremented
+    equal(deletedTasks, currDeletedTasks + 1);
+    // remove the hidden attribute after test is complete
+    deletedTaskCard.removeAttribute("hidden");
+    // reset deletedTasks variable to 0
+    deletedTasks = 0;
 });
 
 
