@@ -42,28 +42,14 @@ test("Checking an entry marks it as complete", () => {
 test("Deleting an item removes it from the list", () => {
     // grab current number of deleted tasks (global variable in index.js)
     const currDeletedTasks = deletedTasks;
-    // grab the delete button
-    const deleteBtn = document.querySelector('.delete-btn');
-    // initiate variable to hold the deleted node
-    let deletedTaskCard;
-    // prevent page refresh on btn click
-    // I will move this into index.js when we start coding the app
-    if (deleteBtn) {
-        deleteBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // grab the deleted node
-            deletedTaskCard = e.target.parentElement.parentElement;
-        })
-        // click delete button
-        deleteBtn.click(); 
-        // check that the number of deletedTasks has been incremented
-        equal(deletedTasks, currDeletedTasks + 1);
-        // remove the hidden attribute after test is complete
-        deletedTaskCard.removeAttribute("hidden");
-        // reset deletedTasks variable to 0
-        deletedTasks = 0;
-    }
-    
+    // click add button to create task card with delete button inside
+    addBtn.click();
+    // click delete button
+    deleteBtn.click(); 
+    // check that the number of deletedTasks has been incremented
+    equal(deletedTasks, currDeletedTasks + 1, `expected ${deletedTasks} deleted task and received ${currDeletedTasks + 1} deleted task`);
+    // reset deletedTasks variable to 0
+    deletedTasks = 0;
 });
 
 // test for toggling a button to hide completed items

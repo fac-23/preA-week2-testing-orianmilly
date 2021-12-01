@@ -1,9 +1,10 @@
-const taskList = document.querySelector('#result');
-const deleteBtn = document.querySelector('.delete-btn');
-let deletedTasks = 0;
 // grab add button
 const addBtn = document.querySelector('#add-btn');
-console.log(addBtn);
+const taskList = document.querySelector('#result');
+// initialize delete button in global scope
+let deleteBtn;
+let deletedTasks = 0;
+
 // add event listener to button
 addBtn.addEventListener('click', () => {
     // get value of task from input
@@ -25,8 +26,8 @@ addBtn.addEventListener('click', () => {
     // create edit button with class edit-btn
     const editBtn = document.createElement('button');
     editBtn.textContent = 'Edit';
-    // create delete button with class delete-btn
-    const deleteBtn = document.createElement('button');
+    // assign delete button with class delete-btn
+    deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     // append buttons to controls
     controls.append(editBtn, deleteBtn);
@@ -36,19 +37,10 @@ addBtn.addEventListener('click', () => {
     taskList.append(taskCard);
 
     // event listener on delete button 
-    deleteBtn.addEventListener('click', (e) => {
-        deleteTask(e);
+    // increment deletedTasks for testing purposes
+    // hide task card
+    deleteBtn.addEventListener('click', () => {
+        deletedTasks++;
+        taskCard.setAttribute("hidden", true);
     })
 })
-
-// Functions
-
-// delete task from list
-function deleteTask(e) {
-    // increment deletedTasks variable to check in tests
-    deletedTasks++;
-    // hide the task card that is being deleted
-    e.target.parentElement.parentElement.setAttribute("hidden", true);
-}
-
-
