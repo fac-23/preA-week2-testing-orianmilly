@@ -1,10 +1,12 @@
 // grab add button
 const addBtn = document.querySelector('#add-btn');
+const filterBtn = document.querySelector('#filter-btn');
 const taskList = document.querySelector('#result');
 // initialize delete and edit buttons in global scope
 let editBtn;
 let deleteBtn;
 let deletedTasks = 0;
+let isHidden = false;
 
 // add event listener to button
 addBtn.addEventListener('click', () => {
@@ -61,4 +63,17 @@ addBtn.addEventListener('click', () => {
         deletedTasks++;
         taskCard.setAttribute("hidden", true);
     })
+})
+
+filterBtn.addEventListener('click', () => {
+    const completedTasks = document.querySelectorAll('.completed-task');
+    // if tasks are not hidden - hide them
+    if (!isHidden) {
+        isHidden = true;
+        completedTasks.forEach(task => task.setAttribute('hidden', true)); 
+    } else {
+        // if tasks are hidden - reveal them
+        isHidden = false;
+        completedTasks.forEach(task => task.removeAttribute('hidden')); 
+    }
 })

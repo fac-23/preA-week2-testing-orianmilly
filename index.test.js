@@ -71,23 +71,16 @@ test("Clicking the edit button enables editing", () => {
 
 // test for toggling a button to hide completed items
 test("Toggling the filter hides completed tasks from the list", () => {
-    // grab the filter button
-    const filterBtn = document.querySelector('#filter-btn');
-    // prevent page refresh on btn click
-    filterBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-    })
-    // click it
+    // add new task
+    addBtn.click();
+    // grab task card
+    const taskCard = document.querySelector('.task-card');
+    // mark task as completed
+    taskCard.classList.add('completed-task');
+    // click filter button
     filterBtn.click();
     // if the item has a classlist of 'completed-task' it should be hidden
-    // get all list items as array
-    const allItems = Array.from(document.querySelectorAll('input.task'));
-    // check they contain a classlist of 'completed-task' and a hidden attribute of true
-    if (allItems.every(item => item.classList.contains('completed-task') && item.hidden === true)) {
-        console.info("Pass: completed tasks are hidden")
-    } else {
-        console.error("Fail: completed tasks are not hidden")
-    };
-
-    });
-
+    // check task card contain a classlist of 'completed-task' and a hidden attribute of true
+    equal((taskCard.classList.contains('completed-task') && taskCard.hidden), true,'completed tasks are hidden')
+    taskCard.remove();
+});
