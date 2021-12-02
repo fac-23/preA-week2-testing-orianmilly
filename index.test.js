@@ -50,7 +50,24 @@ test("Deleting an item removes it from the list", () => {
     equal(deletedTasks, currDeletedTasks + 1, `expected ${deletedTasks} deleted task and received ${currDeletedTasks + 1} deleted task`);
     // reset deletedTasks variable to 0
     deletedTasks = 0;
+    // remove test task card that was created in the test
+    const taskCard = document.querySelector('.task-card');
+    taskCard.remove();
 });
+
+// test for edit button
+test("Clicking the edit button enables editing", () => {
+    // add new task
+    addBtn.click();
+    // click edit button
+    editBtn.click();
+    const input = document.querySelector('input.task-new');
+    // check the readonly attribute has been removed
+    equal(input.getAttribute('readonly'), null, 'edit button removes readonly property');
+    // remove test task card
+    const taskCard = document.querySelector('.task-card');
+    taskCard.remove();
+})
 
 // test for toggling a button to hide completed items
 test("Toggling the filter hides completed tasks from the list", () => {

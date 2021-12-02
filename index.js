@@ -1,7 +1,8 @@
 // grab add button
 const addBtn = document.querySelector('#add-btn');
 const taskList = document.querySelector('#result');
-// initialize delete button in global scope
+// initialize delete and edit buttons in global scope
+let editBtn;
 let deleteBtn;
 let deletedTasks = 0;
 
@@ -18,13 +19,14 @@ addBtn.addEventListener('click', () => {
     const taskNew = document.createElement('input');
     taskNew.classList.add('task-new');
     taskNew.value = taskValue;
-
+    taskNew.setAttribute('readonly', 'readonly');
+    
     // create a div with class controls
     const controls = document.createElement('div');
     controls.classList.add('controls');
 
     // create edit button with class edit-btn
-    const editBtn = document.createElement('button');
+    editBtn = document.createElement('button');
     editBtn.textContent = 'Edit';
     // assign delete button with class delete-btn
     deleteBtn = document.createElement('button');
@@ -36,7 +38,23 @@ addBtn.addEventListener('click', () => {
     taskCard.append(taskNew, controls);
     taskList.append(taskCard);
 
-    // event listener on delete button 
+    // event listener for edit button
+    editBtn.addEventListener('click', () => {
+        if (editBtn.textContent === 'Save') {
+            // make new input value readonly
+            taskNew.setAttribute('readonly', 'readonly');
+            editBtn.textContent = 'Edit';
+        } else {
+            // change button text content
+            editBtn.textContent = 'Save';
+            // enable input editing
+            taskNew.removeAttribute('readonly');
+            // focus on input in edit mode
+            taskNew.focus();
+        }
+    })
+
+    // event listener for delete button 
     // increment deletedTasks for testing purposes
     // hide task card
     deleteBtn.addEventListener('click', () => {
