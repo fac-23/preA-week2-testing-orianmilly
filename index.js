@@ -3,13 +3,15 @@ const addBtn = document.querySelector('#add-btn');
 const filterBtn = document.querySelector('#filter-btn');
 const taskList = document.querySelector('#result');
 // initialize delete and edit buttons in global scope
+let addedTasks = 0;
 let editBtn;
 let deleteBtn;
 let deletedTasks = 0;
 let isHidden = false;
 
 // add event listener to button
-addBtn.addEventListener('click', () => {
+addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     // get value of task from input
     const taskValue = document.querySelector('input#task').value;
 
@@ -23,6 +25,22 @@ addBtn.addEventListener('click', () => {
     taskNew.value = taskValue;
     taskNew.setAttribute('readonly', 'readonly');
     
+    // set checkboxes to appear once task has been added 
+    const checkbox = document.createElement("input");
+    checkbox.type = 'checkbox';
+    checkbox.id = 'checkbox';
+    taskCard.prepend(checkbox)
+
+     // once a user clicks the checkbox is ticked
+        checkbox.addEventListener('click', () => {
+        //console.log(checkbox.checked)
+        if(checkbox.checked) {
+            taskCard.classList.add("completed-task") 
+        } else {
+            taskCard.classList.remove("completed-task")
+        }
+    })
+
     // create a div with class controls
     const controls = document.createElement('div');
     controls.classList.add('controls');
@@ -71,9 +89,11 @@ filterBtn.addEventListener('click', () => {
     if (!isHidden) {
         isHidden = true;
         completedTasks.forEach(task => task.setAttribute('hidden', true)); 
+        filterBtn.textContent = "Reveal completed";
     } else {
         // if tasks are hidden - reveal them
         isHidden = false;
         completedTasks.forEach(task => task.removeAttribute('hidden')); 
+        filterBtn.textContent = "Hide completed";
     }
 })
