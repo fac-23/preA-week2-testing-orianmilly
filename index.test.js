@@ -1,42 +1,34 @@
+
 // Test for adding a new task to the to-do list
 
 test("Submitting a new task adds it to the list", () => {
-    // Grab the input tag from html with an id of task
-    const input = document.querySelector("input[id='task']");
-    // Add a value to the input to test it's working
-    input.value = "New task";
-    // Write an if statement to check if the box contains text
-    if(input.value !== "") {
-        console.info(`Pass: Task contains text`)
-    } else {
-        console.error(`Fail: Task doesn't contain text`)
-    }
-    // grab add button element for submitting a task
-    const addBtn = document.querySelector("input[id='add-btn']")
-    // Event click on add button for user submit their task
-    addBtn.addEventListener('click', (event) => {
-    // Stop page from reloading once task is added
-        event.preventDefault();
-        })
+    const before = taskList.childElementCount;
+    addBtn.click()
+    // taskList is parent element of 
+    const after = taskList.childElementCount;
+    equal(after, before + 1 )
+    const taskCard = document.querySelector(".task-card")
+    taskCard.remove(); 
     })
+
 
 // Test for ticking completed items off the to-do list
 
 test("Checking an entry marks it as complete", () => {
-    // Grab the input tag with a class of task-added
-    const taskAdded = document.querySelector("input[class='task-added']");
-    // Grab the button tag with id of complete-btn
-    const completeBtn = document.querySelector("button[id='complete-btn']");
-    // If the user clicks the complete button, complete class is added
-    completeBtn.addEventListener('click', (event) => {
-        if (event === true) {
-            console.info(`Pass: Task is complete`)
-    // Or else the complete class is hidden
-        } else {
-            console.error(`Fail: Task is not complete`)
-        }
+    // Click add button
+        addBtn.click(); 
+    // grab checkbox from local scope
+        const checkbox = document.querySelector("#checkbox")
+    // click checkbox 
+        checkbox.click();
+    // grab task card from add btn
+        const taskCard = document.querySelector(".task-card")
+    //  completed div contains completed-task class
+        const taskCardDone = taskCard.classList.contains("completed-task")
+    // equal function checks that the completed task is true
+        equal(taskCardDone, true) 
+        taskCard.remove();
     })
-})
 
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
