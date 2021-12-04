@@ -33,7 +33,6 @@ addBtn.addEventListener('click', (e) => {
 
      // once a user clicks the checkbox is ticked
         checkbox.addEventListener('click', () => {
-        //console.log(checkbox.checked)
         if(checkbox.checked) {
             taskCard.classList.add("completed-task") 
         } else {
@@ -89,11 +88,11 @@ filterBtn.addEventListener('click', () => {
     if (!isHidden) {
         isHidden = true;
         completedTasks.forEach(task => task.setAttribute('hidden', true)); 
-        filterBtn.textContent = "Reveal completed";
+        filterBtn.textContent = "Reveal tasks to complete";
     } else {
         // if tasks are hidden - reveal them
         isHidden = false;
         completedTasks.forEach(task => task.removeAttribute('hidden')); 
-        filterBtn.textContent = "Hide completed";
+        filterBtn.textContent = "Hide completed tasks";
     }
 })
