@@ -73,6 +73,7 @@ test("Toggling the filter hides completed tasks from the list", () => {
     filterBtn.click();
     // if the item has a classlist of 'completed-task' it should be hidden
     // check task card contain a classlist of 'completed-task' and a hidden attribute of true
-    equal((taskCard.classList.contains('completed-task') && taskCard.hidden), true,'completed tasks are hidden')
+    equal((taskCard.classList.contains('completed-task') && taskCard.style.display === "none"), true,'completed tasks are hidden')
     taskCard.remove();
+    filterBtn.textContent = "Hide completed tasks";
 });

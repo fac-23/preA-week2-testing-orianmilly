@@ -11,10 +11,13 @@ let isHidden = false;
 
 // add event listener to button
 addBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     // get value of task from input
-    const taskValue = document.querySelector('input#task').value;
 
+    const taskValue = document.querySelector('input#task').value;
+    if(taskValue !== "") {
+        e.preventDefault();
+    
     // create a div with a class of task-card
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
@@ -33,7 +36,6 @@ addBtn.addEventListener('click', (e) => {
 
      // once a user clicks the checkbox is ticked
         checkbox.addEventListener('click', () => {
-        //console.log(checkbox.checked)
         if(checkbox.checked) {
             taskCard.classList.add("completed-task") 
         } else {
@@ -47,10 +49,13 @@ addBtn.addEventListener('click', (e) => {
 
     // create edit button with class edit-btn
     editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
+    editBtn.innerHTML = String.fromCodePoint(0x1F58B);
+    editBtn.ariaLabel = "Edit";
     // assign delete button with class delete-btn
     deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    deleteBtn.innerHTML = String.fromCodePoint(0x1F5D1);
+    deleteBtn.ariaLabel = "Delete";
+
     // append buttons to controls
     controls.append(editBtn, deleteBtn);
 
@@ -60,13 +65,14 @@ addBtn.addEventListener('click', (e) => {
 
     // event listener for edit button
     editBtn.addEventListener('click', () => {
+        console.log(editBtn)
         if (editBtn.textContent === 'Save') {
             // make new input value readonly
             taskNew.setAttribute('readonly', 'readonly');
             editBtn.textContent = 'Edit';
         } else {
             // change button text content
-            editBtn.textContent = 'Save';
+            editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
             // enable input editing
             taskNew.removeAttribute('readonly');
             // focus on input in edit mode
@@ -79,8 +85,9 @@ addBtn.addEventListener('click', (e) => {
     // hide task card
     deleteBtn.addEventListener('click', () => {
         deletedTasks++;
-        taskCard.setAttribute("hidden", true);
+        taskCard.style.display = "none";
     })
+}
 })
 
 filterBtn.addEventListener('click', () => {
@@ -88,12 +95,12 @@ filterBtn.addEventListener('click', () => {
     // if tasks are not hidden - hide them
     if (!isHidden) {
         isHidden = true;
-        completedTasks.forEach(task => task.setAttribute('hidden', true)); 
-        filterBtn.textContent = "Reveal completed";
+        completedTasks.forEach(task => task.style.display = "none"); 
+        filterBtn.textContent = "Reveal tasks to complete";
     } else {
         // if tasks are hidden - reveal them
         isHidden = false;
-        completedTasks.forEach(task => task.removeAttribute('hidden')); 
-        filterBtn.textContent = "Hide completed";
+        completedTasks.forEach(task => task.style.display = "flex"); 
+        filterBtn.textContent = "Hide completed tasks";
     }
 })

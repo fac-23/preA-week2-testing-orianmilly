@@ -1,7 +1,118 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Gelasio', serif; 
+    }
+    body {
+        height: 100vh;
+        width: 100%;
+        background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(139,190,252,1) 100%);
+    }
 
+    h1 {
+        margin: 0 auto;
+        color: rgb(12, 102, 236);
+        text-shadow: 3px 3px 2px rgb(170, 227, 241);
+        font-size: 2rem;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+     
+    form {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        max-width: 300px;
+        margin: 100px auto;
+        padding: 25px;
+        border-radius: 5px;
+        background: rgb(210, 250, 248);
+        }
+    
+    #task {
+        background: transparent;
+        background: rgb(210, 250, 248);
+        border-top: rgb(210, 250, 248);
+        border-right:rgb(210, 250, 248);
+        border-left: rgb(210, 250, 248);
+        /*margin: 0 auto;
+        width: 70%;*/
+
+    }
+
+    #add-btn {
+        width: 2rem;
+    }
+    .task-box {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 5px;
+        background: rgb(181, 225, 250);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    #result {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+
+    .task-card {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .controls {
+        display: flex;
+    }
+
+    .controls > * {
+        margin: 5px;
+        
+    }
+
+
+
+
+    
+    .task-new {
+        border: transparent;
+        border-bottom: 1px solid grey;
+        background: rgb(181, 225, 250);
+        
+        
+
+        
+    }
+    #filter-btn {
+        background-color:rgb(123, 173, 247);
+        color: rgb(6, 89, 245);
+        text-shadow: 1px 1px 1px rgb(185, 185, 247);
+        border: 2px solid rgb(110, 134, 245);
+
+    }
+    
     .completed-task input {
     color: rgb(93, 247, 101);
     text-decoration:line-through;
     }
     
-    
+    .element {
+        opacity: 0;
+    }
