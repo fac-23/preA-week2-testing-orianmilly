@@ -13,15 +13,14 @@
     </head>
     <body>
         <h1>To Do List</h1>
-    <form>
-        <!--<label id="intro" for="task">What do you need to get done?</label>-->
-        <input name="task" id="task" type="text" placeholder="Add a task" required>
+    <form action="" method="POST">
+        <input name="task" id="task" type="text" placeholder="Add a task" required/>
 
-        <input id="add-btn" type="submit" value="+">
+        <input id="add-btn" type="submit" value="+" required/>
     </form>
 
     <div class="task-box">
-    <button id="filter-btn"></button>
+    <button id="filter-btn">Hide completed tasks</button>
     <output id="result">
     </div>
                 
