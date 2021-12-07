@@ -30,9 +30,10 @@ addBtn.addEventListener('click', (e) => {
     
     // set checkboxes to appear once task has been added 
     const checkbox = document.createElement("input");
+    //checkbox.innerHTML = String.fromCodePoint(0x2705)
     checkbox.type = 'checkbox';
     checkbox.id = 'checkbox';
-    taskCard.prepend(checkbox)
+    taskCard.prepend(checkbox);
 
      // once a user clicks the checkbox is ticked
         checkbox.addEventListener('click', () => {
@@ -86,8 +87,8 @@ addBtn.addEventListener('click', (e) => {
     deleteBtn.addEventListener('click', () => {
         deletedTasks++;
         taskCard.style.display = "none";
-    })
-}
+        })
+    }
 })
 
 filterBtn.addEventListener('click', () => {
@@ -96,11 +97,11 @@ filterBtn.addEventListener('click', () => {
     if (!isHidden) {
         isHidden = true;
         completedTasks.forEach(task => task.style.display = "none"); 
-        filterBtn.textContent = "Reveal tasks to complete";
+        filterBtn.textContent = "Reveal tasks to complete" + String.fromCodePoint(0x1F9D9);
     } else {
         // if tasks are hidden - reveal them
         isHidden = false;
         completedTasks.forEach(task => task.style.display = "flex"); 
-        filterBtn.textContent = "Hide completed tasks";
+        filterBtn.textContent = "Hide completed tasks" + String.fromCodePoint(0x1F648);
     }
 })
