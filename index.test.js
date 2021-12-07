@@ -3,10 +3,9 @@
 
 test("Submitting a new task adds it to the list", () => {
     const before = taskList.childElementCount;
-    addBtn.click()
-    // taskList is parent element of 
+    addBtn.click();
     const after = taskList.childElementCount;
-    equal(after, before + 1 )
+    equal(after, before + 1)
     const taskCard = document.querySelector(".task-card")
     taskCard.remove(); 
     })
@@ -26,9 +25,9 @@ test("Checking an entry marks it as complete", () => {
     //  completed div contains completed-task class
         const taskCardDone = taskCard.classList.contains("completed-task")
     // equal function checks that the completed task is true
-        equal(taskCardDone, true) 
+        equal(taskCardDone, true)
         taskCard.remove();
-    })
+    });
 
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
