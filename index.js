@@ -4,12 +4,10 @@ const filterBtn = document.querySelector('#filter-btn');
 const taskList = document.querySelector('#result');
 // initialize delete and edit buttons in global scope
 let addedTasks = 0;
-let editBtn;
 let deleteBtn;
 let deletedTasks = 0;
 let isHidden = false;
 let isEditing = false;
-console.log(isEditing);
 
 // add event listener to button
 addBtn.addEventListener('click', (e) => {
@@ -50,7 +48,7 @@ addBtn.addEventListener('click', (e) => {
     controls.classList.add('controls');
 
     // create edit button with class edit-btn
-    editBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
     editBtn.innerHTML = String.fromCodePoint(0x1F58B);
     editBtn.ariaLabel = "Edit";
     // assign delete button with class delete-btn

@@ -62,6 +62,7 @@ test("Clicking the edit button enables editing", () => {
     // add new task
     addBtn.click();
     // click edit button
+    const editBtn = document.querySelector('[aria-label="Edit"]');
     editBtn.click();
     const input = document.querySelector('input.task-new');
     // check the readonly attribute has been removed
