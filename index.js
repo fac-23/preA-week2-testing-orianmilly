@@ -4,20 +4,19 @@ const filterBtn = document.querySelector('#filter-btn');
 const taskList = document.querySelector('#result');
 // initialize delete and edit buttons in global scope
 let addedTasks = 0;
-let editBtn;
 let deleteBtn;
 let deletedTasks = 0;
 let isHidden = false;
+let isEditing = false;
 
 // add event listener to button
 addBtn.addEventListener('click', (e) => {
     //e.preventDefault();
     // get value of task from input
-
-    const taskValue = document.querySelector('input#task').value;
-    if(taskValue !== "") {
+    let userInput = document.querySelector('input#task');
+    // if user has entered a value, create a new task
+    if(userInput.value !== "") {
         e.preventDefault();
-    
     // create a div with a class of task-card
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
@@ -25,7 +24,7 @@ addBtn.addEventListener('click', (e) => {
     // create an input with class task-new
     const taskNew = document.createElement('input');
     taskNew.classList.add('task-new');
-    taskNew.value = taskValue;
+    taskNew.value = userInput.value;
     taskNew.setAttribute('readonly', 'readonly');
     
     // set checkboxes to appear once task has been added 
@@ -49,7 +48,7 @@ addBtn.addEventListener('click', (e) => {
     controls.classList.add('controls');
 
     // create edit button with class edit-btn
-    editBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
     editBtn.innerHTML = String.fromCodePoint(0x1F58B);
     editBtn.ariaLabel = "Edit";
     // assign delete button with class delete-btn
@@ -63,21 +62,30 @@ addBtn.addEventListener('click', (e) => {
     // append controls to task card
     taskCard.append(taskNew, controls);
     taskList.append(taskCard);
+    // clear the user input field
+    userInput.value = "";
 
+    
     // event listener for edit button
     editBtn.addEventListener('click', () => {
-        console.log(editBtn)
-        if (editBtn.textContent === 'Save') {
-            // make new input value readonly
-            taskNew.setAttribute('readonly', 'readonly');
-            editBtn.textContent = 'Edit';
-        } else {
-            // change button text content
+        // enter edit node
+        if (!isEditing) {
+            isEditing = true;
+            // change button to save emoji
             editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
             // enable input editing
             taskNew.removeAttribute('readonly');
             // focus on input in edit mode
             taskNew.focus();
+            console.log('edit mode');
+        } else {
+            // save task
+            isEditing = false;
+            // make new input value readonly
+            taskNew.setAttribute('readonly', 'readonly');
+            // reset button to edit emoji
+            editBtn.innerHTML = editBtn.innerHTML = String.fromCodePoint(0x1F58B)
+            console.log('saved');
         }
     })
 
@@ -86,9 +94,10 @@ addBtn.addEventListener('click', (e) => {
     // hide task card
     deleteBtn.addEventListener('click', () => {
         deletedTasks++;
+        // taskCard.remove();
         taskCard.style.display = "none";
         })
-    }
+    }  
 })
 
 filterBtn.addEventListener('click', () => {
