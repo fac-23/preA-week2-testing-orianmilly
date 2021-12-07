@@ -9,6 +9,7 @@ let deleteBtn;
 let deletedTasks = 0;
 let isHidden = false;
 let isEditing = false;
+console.log(isEditing);
 
 // add event listener to button
 addBtn.addEventListener('click', (e) => {
@@ -67,30 +68,26 @@ addBtn.addEventListener('click', (e) => {
     userInput.value = "";
 
     
-
     // event listener for edit button
     editBtn.addEventListener('click', () => {
-        // if we are in editing mode, clicking the button will save the changes
-        if (isEditing) {
-            // make new input value readonly
-            taskNew.setAttribute('readonly', 'readonly');
-            // reset button to edit emoji
-            editBtn.innerHTML = editBtn.innerHTML = String.fromCodePoint(0x1F58B)
-            // set isEditing to False 
-            isEditing = false;
-            console.log(isEditing);
-            console.dir(editBtn);
-        } else {
-            // this code block will run first because isEditing is initially set to false
+        // enter edit node
+        if (!isEditing) {
+            isEditing = true;
             // change button to save emoji
             editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
             // enable input editing
             taskNew.removeAttribute('readonly');
             // focus on input in edit mode
             taskNew.focus();
-            // set isEditing to true
-            isEditing = true;
-            console.log(isEditing);
+            console.log('edit mode');
+        } else {
+            // save task
+            isEditing = false;
+            // make new input value readonly
+            taskNew.setAttribute('readonly', 'readonly');
+            // reset button to edit emoji
+            editBtn.innerHTML = editBtn.innerHTML = String.fromCodePoint(0x1F58B)
+            console.log('saved');
         }
     })
 

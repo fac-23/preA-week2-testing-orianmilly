@@ -66,6 +66,8 @@ test("Clicking the edit button enables editing", () => {
     const input = document.querySelector('input.task-new');
     // check the readonly attribute has been removed
     equal(input.getAttribute('readonly'), null, 'edit button removes readonly property');
+    // click edit button again to reset
+    editBtn.click();
     // remove test task card
     const taskCard = document.querySelector('.task-card');
     taskCard.remove();
