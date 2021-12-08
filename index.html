@@ -19,10 +19,13 @@
             </button>
             <section class="flex-container">
                 <div class="task-box">
+                    <div class="filter-container">
+                    <label for="filter-btn">Hide completed tasks</label>
                     <label class="switch">
                         <input type="checkbox" id="filter-btn" aria-label="Hide completed tasks"/>
                         <span class="slider round"></span>
                     </label>
+                </div>
                     <form action="" method="POST">
                         <input name="task" id="task" type="text" placeholder="Add a task" required/>
                         <button id="add-btn" type="submit" aria-label="Add tasks"><i class="far fa-plus-square"></i></button>
