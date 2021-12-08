@@ -12,19 +12,21 @@
     <title>To Do List App</title>
     </head>
     <body>
+        <main>
         <h1>To Do List</h1>
-    <form action="" method="POST">
-        <input name="task" id="task" type="text" placeholder="Add a task" required/>
-
-        <button id="add-btn" type="submit" aria-label="Add tasks"><i class="far fa-plus-square"></i></button>
-    </form>
+        <button id="new-list-btn" type="submit" aria-label="Add new list"><i class="far fa-plus-square"></i></button>
 
     <div class="task-box">
-    <label class="switch">
-        <input type="checkbox" id="filter-btn" aria-label="Hide completed tasks"/>
-        <span class="slider round"></span>
-    </label>
-    <output id="result">
+        <form action="" method="POST">
+            <input name="task" id="task" type="text" placeholder="Add a task" required/>
+    
+            <button id="add-btn" type="submit" aria-label="Add tasks"><i class="far fa-plus-square"></i></button>
+        </form>
+        <label class="switch">
+            <input type="checkbox" id="filter-btn" aria-label="Hide completed tasks"/>
+            <span class="slider round"></span>
+        </label>
+        <output id="result">
     </div>
                 
         <!-- <div class="task-card">
@@ -35,6 +37,7 @@
             </div>
         </div>  -->
     </output>
+    </main>
 </body>
 <script src="index.js"></script>
 <script src="test-helpers.js"></script>
