@@ -11,7 +11,6 @@ let isEditing = false;
 
 // add event listener to button
 addBtn.addEventListener('click', (e) => {
-    //e.preventDefault();
     // get value of task from input
     let userInput = document.querySelector('input#task');
     // if user has entered a value, create a new task
