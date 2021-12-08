@@ -24,7 +24,7 @@ newListBtn.addEventListener('click', () => {
     const userInput = document.createElement('input');
     userInput.id = "task";
     userInput.type = "text";
-    userInput.placeholder = "Task 1";
+    userInput.placeholder = "Add a task";
     
     // button with id of add-btn and type submit, aria label "Add tasks"
     const addBtn = document.createElement('button');
@@ -131,8 +131,6 @@ newListBtn.addEventListener('click', () => {
     addBtn.append(plusIcon);
     // append input and button to form
     form.append(userInput, addBtn);
-    // append form to taskBox
-    taskBox.append(form);
     
     // create label with class switch
     const label = document.createElement('label');
@@ -157,10 +155,10 @@ newListBtn.addEventListener('click', () => {
     output.id = "result";
     
     // append label and output to the task box
-    taskBox.append(label, output);
+    taskBox.append(label, form, output);
     // append to body
-    const main = document.querySelector('main');
-    main.append(taskBox);
+    const tasksContainer = document.querySelector('.flex-container');
+    tasksContainer.append(taskBox);
 })
 
 // add event listener to addButton inside the first task-box 
