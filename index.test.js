@@ -3,6 +3,7 @@ let taskNew = document.querySelector('input#task');
 // Test for adding a new task to the to-do list
 
 test("Submitting a new task adds it to the list", () => {
+    const taskList = document.querySelector('#result');
     const before = taskList.childElementCount;
     // give the input a value otherwise new task will not be created
     taskNew.value = "New task";
