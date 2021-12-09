@@ -1,12 +1,10 @@
 // grab new lists button
-const newListBtn = document.querySelector('#new-list-btn')
+const newListBtn = document.querySelector('#new-list-btn');
 // grab add button
 const addBtn = document.querySelector('#add-btn');
 const filterBtn = document.querySelector('#filter-btn');
 // initialize delete button in global scope
-let addedTasks = 0;
 let deleteBtn;
-let deletedTasks = 0;
 let isHidden = false;
 let isEditing = false;
 
@@ -224,19 +222,21 @@ addBtn.addEventListener('click', (e) => {
             isEditing = true;
             // change button to save emoji
             editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
+            // set aria-label to 'Save'
+            editBtn.setAttribute('aria-label', 'Save');
             // enable input editing
             taskNew.removeAttribute('readonly');
             // focus on input in edit mode
             taskNew.focus();
-            console.log('edit mode');
         } else {
             // save task
             isEditing = false;
+            // reset button to edit emoji
+            editBtn.innerHTML = String.fromCodePoint(0x1F58B);
+            // reset aria-label to 'Edit'
+            editBtn.setAttribute('aria-label', 'Edit');
             // make new input value readonly
             taskNew.setAttribute('readonly', 'readonly');
-            // reset button to edit emoji
-            editBtn.innerHTML = editBtn.innerHTML = String.fromCodePoint(0x1F58B)
-            console.log('saved');
         }
     })
 
@@ -244,8 +244,6 @@ addBtn.addEventListener('click', (e) => {
     // increment deletedTasks for testing purposes
     // hide task card
     deleteBtn.addEventListener('click', () => {
-        deletedTasks++;
-        // taskCard.remove();
         taskCard.style.display = "none";
         })
     }  

@@ -32,7 +32,7 @@ test("Checking an entry marks it as complete", () => {
     //  completed div contains completed-task class
         const taskCardDone = taskCard.classList.contains("completed-task")
     // equal function checks that the completed task is true
-        equal(taskCardDone, true)
+        equal(taskCardDone, true, `completed tasks have a class of 'completed-task'`)
         taskCard.remove();
         // reset value to empty string
         taskNew.value = ""; 
@@ -40,20 +40,19 @@ test("Checking an entry marks it as complete", () => {
 
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
-    // grab current number of deleted tasks (global variable in index.js)
-    const currDeletedTasks = deletedTasks;
+    // enter value to add new task
     taskNew.value = "New task";
-    // click add button to create task card with delete button inside
+    // click add button to create task card 
     addBtn.click();
+    // grab the task card that was created
+    const taskCard = document.querySelector('.task-card');
     // click delete button
     deleteBtn.click(); 
-    // check that the number of deletedTasks has been incremented
-    equal(deletedTasks, currDeletedTasks + 1, `expected ${deletedTasks} deleted task and received ${currDeletedTasks + 1} deleted task`);
-    // reset deletedTasks variable to 0
-    deletedTasks = 0;
+    // check that the task card's display property is set to 'none'
+    equal(taskCard.style.display === 'none', true, `deleted tasks have a display property of 'none'`);
     // remove test task card that was created in the test
-    const taskCard = document.querySelector('.task-card');
     taskCard.remove();
+    // clear user input 
     taskNew.value = "";
 });
 
