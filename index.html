@@ -14,9 +14,13 @@
     <body>
         <main>
             <h1>To Do List</h1>
-            <button id="new-list-btn" type="submit" aria-label="Add new list">
-                <i class="far fa-plus-square add-list"></i>
-            </button>
+            <div class="new-list-btn-container">
+                <button id="new-list-btn" type="submit" aria-describedby="add-btn-title">
+                    <i class="far fa-plus-square add-list"></i>
+                </button>
+                <p id="add-btn-title">Add a new list</p>
+            </div>
+            
             <section class="flex-container">
                 <div class="task-box">
                     <div class="filter-container">
@@ -27,7 +31,7 @@
                     </label>
                 </div>
                     <form action="" method="POST">
-                        <input name="task" id="task" type="text" placeholder="Add a task" required/>
+                        <input name="task" id="task" type="text" placeholder="Add a task" required aria-label="Add a task"/>
                         <button id="add-btn" type="submit" aria-label="Add tasks"><i class="far fa-plus-square"></i></button>
                     </form>
                     <output id="result"></output>

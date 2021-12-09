@@ -29,16 +29,26 @@
         text-align: center;
         padding: 2rem;
     }
+
+    .new-list-btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgb(47, 47, 47);
+        margin-bottom: 15px;
+    }
     
     #new-list-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
         height: 64px;
         width: 64px;
         border-radius: 50%;
         background-color: rgb(210, 250, 248);
         border: transparent;
+    }
+
+    #add-btn-title {
+        margin: 5px 0;
+        background-color: rgb(210, 250, 248);
     }
 
     i.add-list {
@@ -60,12 +70,13 @@
         border-top: rgb(210, 250, 248);
         border-right:rgb(210, 250, 248);
         border-left: rgb(210, 250, 248);
-        min-width: 70%;
+        width: 100%;
     }
 
     #add-btn {
         border: none;
         background: rgb(210, 250, 248);
+        margin: 0 5px;
     }
 
     .fa-plus-square { 
@@ -86,7 +97,6 @@
     }
 
     #result {
-        width: 95%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -129,17 +139,16 @@
         margin-left: 10px;
         margin-right: 10px;   
     }
+
     .filter-container {
         display: flex;
         justify-content: flex-end;
         align-items: center;
         gap: 1rem;
     }
+
     label[for="filter-btn"] {
-        align-self: flex-end;
         color: rgb(142, 142, 151);
-        margin-bottom: 0.5rem;
-        
     }
 
     .switch {
@@ -154,7 +163,6 @@
         width: 0;
         height: 0; 
     }
-    
 
     .slider {
         position: absolute;
@@ -194,7 +202,7 @@
         transform: translateX(26px);
     }
       
-      /* Rounded sliders */
+    /* Rounded sliders */
     .slider.round {
         border-radius: 34px;
     }
@@ -203,18 +211,14 @@
         border-radius: 50%;
     }
 
-
     .completed-task input {
     color: rgb(33 129 38);
     text-decoration:line-through;
     }
 
     @media screen and (min-width: 600px) {
-        form {
-            max-width: 300px;
-        }
         .task-box {
-            max-width: 300px;
+            max-width: 400px;
         }
     }
 
@@ -223,5 +227,12 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
+            align-items: flex-start;
+        }
+
+        .new-list-btn-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     }
