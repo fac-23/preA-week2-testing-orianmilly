@@ -135,11 +135,11 @@
         align-items: center;
         gap: 1rem;
     }
+
     label[for="filter-btn"] {
         align-self: flex-end;
         color: rgb(142, 142, 151);
         margin-bottom: 0.5rem;
-        
     }
 
     .switch {
@@ -154,7 +154,6 @@
         width: 0;
         height: 0; 
     }
-    
 
     .slider {
         position: absolute;
@@ -194,7 +193,7 @@
         transform: translateX(26px);
     }
       
-      /* Rounded sliders */
+    /* Rounded sliders */
     .slider.round {
         border-radius: 34px;
     }
@@ -202,7 +201,6 @@
     .slider.round:before {
         border-radius: 50%;
     }
-
 
     .completed-task input {
     color: rgb(33 129 38);

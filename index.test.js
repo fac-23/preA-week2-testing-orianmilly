@@ -46,6 +46,8 @@ test("Deleting an item removes it from the list", () => {
     addBtn.click();
     // grab the task card that was created
     const taskCard = document.querySelector('.task-card');
+    // grab delete button
+    const deleteBtn = document.querySelector('[aria-label="Delete"]');
     // click delete button
     deleteBtn.click(); 
     // check that the task card's display property is set to 'none'
@@ -84,6 +86,8 @@ test("Toggling the filter hides completed tasks from the list", () => {
     const taskCard = document.querySelector('.task-card');
     // mark task as completed
     taskCard.classList.add('completed-task');
+    // grab filter button
+    const filterBtn = document.querySelector('#filter-btn');
     // click filter button
     filterBtn.click();
     // if the item has a classlist of 'completed-task' it should be hidden
