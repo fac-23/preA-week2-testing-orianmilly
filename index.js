@@ -26,7 +26,7 @@ newListBtn.addEventListener('click', () => {
     const switchToggle = document.createElement('label');
     switchToggle.classList.add("switch");
     
-    // createinput type checkbox, id of "filter-btn", aria-label "Hide completed tasks"
+    // create button type checkbox, id of "filter-btn" and aria-label "Hide completed tasks"
     const filterBtn = document.createElement('input');
     filterBtn.id = "filter-btn";
     filterBtn.type = "checkbox";
@@ -82,7 +82,8 @@ newListBtn.addEventListener('click', () => {
     // event listener for creating new task cards
     addBtn.addEventListener('click', (e) => {
         // if user has entered a value, create a new task
-        if(userInput.value !== "") {
+
+        if(userInput !== "") {
             e.preventDefault();
             // create a div with a class of task-card
             const taskCard = document.createElement('div');
@@ -191,7 +192,7 @@ addBtn.addEventListener('click', (e) => {
     // get value of task from input
     let userInput = document.querySelector('input#task');
     // if user has entered a value, create a new task
-    if(userInput.value !== "") {
+    if(userInput !== "") {
         e.preventDefault();
         // create a div with a class of task-card
         const taskCard = document.createElement('div');
