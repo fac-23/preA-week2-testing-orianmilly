@@ -13,6 +13,34 @@ newListBtn.addEventListener('click', () => {
     // create a div with class task-box
     const taskBox = document.createElement('div');
     taskBox.classList.add('task-box');
+    // create filter-container div
+    const filterContainer = document.createElement('div');
+    filterContainer.classList.add('filter-container');
+
+    // create label for filter button
+    const filterBtnLabel = document.createElement('label');
+    filterBtnLabel.setAttribute("for", "filter-btn") ;
+    filterBtnLabel.textContent = "Hide completed tasks"
+
+    // create label with class switch
+    const switchToggle = document.createElement('label');
+    switchToggle.classList.add("switch");
+    
+    // createinput type checkbox, id of "filter-btn", aria-label "Hide completed tasks"
+    const filterBtn = document.createElement('input');
+    filterBtn.id = "filter-btn";
+    filterBtn.type = "checkbox";
+    filterBtn.ariaLabel = "Hide complete tasks";
+    
+    // create span with class "slider round"
+    const span = document.createElement('span');
+    span.classList.add('slider');
+    span.classList.add('round');
+    
+    // append input and span to label
+    switchToggle.append(filterBtn, span);
+    // append filter button label and switch toggle label to filter container
+    filterContainer.append(filterBtnLabel, switchToggle);
     
     // create a form
     const form = document.createElement('form');
@@ -40,30 +68,12 @@ newListBtn.addEventListener('click', () => {
     // append input and button to form
     form.append(userInput, addBtn);
     
-    // create label with class switch
-    const label = document.createElement('label');
-    label.classList.add("switch");
-    
-    // createinput type checkbox, id of "filter-btn", aria-label "Hide completed tasks"
-    const filterBtn = document.createElement('input');
-    filterBtn.id = "filter-btn";
-    filterBtn.type = "checkbox";
-    filterBtn.ariaLabel = "Hide complete tasks";
-    
-    // create span with class "slider round"
-    const span = document.createElement('span');
-    span.classList.add('slider');
-    span.classList.add('round');
-    
-    // append input and span to label
-    label.append(filterBtn, span);
-    
     // create output with id of result
     const output = document.createElement('output');
     output.id = "result";
     
     // append label and output to the task box
-    taskBox.append(label, form, output);
+    taskBox.append(filterContainer, form, output);
     // append to container
     const tasksContainer = document.querySelector('.flex-container');
     tasksContainer.append(taskBox);

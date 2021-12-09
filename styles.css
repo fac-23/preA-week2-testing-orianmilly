@@ -129,6 +129,7 @@
         margin-left: 10px;
         margin-right: 10px;   
     }
+
     .filter-container {
         display: flex;
         justify-content: flex-end;
@@ -137,9 +138,7 @@
     }
 
     label[for="filter-btn"] {
-        align-self: flex-end;
         color: rgb(142, 142, 151);
-        margin-bottom: 0.5rem;
     }
 
     .switch {
