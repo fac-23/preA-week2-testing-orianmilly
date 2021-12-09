@@ -22,6 +22,7 @@ newListBtn.addEventListener('click', () => {
     userInput.id = "task";
     userInput.type = "text";
     userInput.placeholder = "Add a task";
+    userInput.setAttribute('required', true);
     
     // button with id of add-btn and type submit, aria label "Add tasks"
     const addBtn = document.createElement('button');
