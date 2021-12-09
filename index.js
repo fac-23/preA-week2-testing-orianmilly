@@ -83,7 +83,7 @@ newListBtn.addEventListener('click', () => {
     addBtn.addEventListener('click', (e) => {
         // if user has entered a value, create a new task
 
-        if(userInput !== "") {
+        if(userInput.value !== "" && userInput.value !== new RegExp("/^\s+$/")) {
             e.preventDefault();
             // create a div with a class of task-card
             const taskCard = document.createElement('div');
@@ -192,7 +192,7 @@ addBtn.addEventListener('click', (e) => {
     // get value of task from input
     let userInput = document.querySelector('input#task');
     // if user has entered a value, create a new task
-    if(userInput !== "") {
+    if(userInput.value !== "" && userInput.value !== new RegExp("/^\s+$/")) {
         e.preventDefault();
         // create a div with a class of task-card
         const taskCard = document.createElement('div');
