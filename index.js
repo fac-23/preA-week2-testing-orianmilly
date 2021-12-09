@@ -3,6 +3,10 @@ const newListBtn = document.querySelector('#new-list-btn');
 // grab add button
 const addBtn = document.querySelector('#add-btn');
 const filterBtn = document.querySelector('#filter-btn');
+// emojis
+const editEmoji = String.fromCodePoint(0x1F58B);
+const saveEmoji = String.fromCodePoint(0x1F4CC);
+const deleteEmoji = String.fromCodePoint(0x1F5D1);
 // initialize delete button in global scope
 let deleteBtn;
 let isHidden = false;
@@ -67,12 +71,12 @@ newListBtn.addEventListener('click', () => {
     
         // create edit button with class edit-btn
         const editBtn = document.createElement('button');
-        editBtn.innerHTML = String.fromCodePoint(0x1F58B);
+        editBtn.innerHTML = 'Edit' + editEmoji;
         editBtn.ariaLabel = "Edit";
 
         // assign delete button with class delete-btn
         deleteBtn = document.createElement('button');
-        deleteBtn.innerHTML = String.fromCodePoint(0x1F5D1);
+        deleteBtn.innerHTML = 'Delete' + deleteEmoji;
         deleteBtn.ariaLabel = "Delete";
     
         // append buttons to controls
@@ -92,7 +96,7 @@ newListBtn.addEventListener('click', () => {
             if (!isEditing) {
                 isEditing = true;
                 // change button to save emoji
-                editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
+                editBtn.innerHTML = 'Save' + saveEmoji;
                 // enable input editing
                 taskNew.removeAttribute('readonly');
                 // focus on input in edit mode
@@ -104,7 +108,7 @@ newListBtn.addEventListener('click', () => {
                 // make new input value readonly
                 taskNew.setAttribute('readonly', 'readonly');
                 // reset button to edit emoji
-                editBtn.innerHTML = editBtn.innerHTML = String.fromCodePoint(0x1F58B)
+                editBtn.innerHTML = 'Edit' + editEmoji
                 console.log('saved');
             }
         })
@@ -198,11 +202,11 @@ addBtn.addEventListener('click', (e) => {
 
     // create edit button with class edit-btn
     const editBtn = document.createElement('button');
-    editBtn.innerHTML = String.fromCodePoint(0x1F58B);
+    editBtn.innerHTML = 'Edit' + editEmoji;
     editBtn.ariaLabel = "Edit";
     // assign delete button with class delete-btn
     deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = String.fromCodePoint(0x1F5D1);
+    deleteBtn.innerHTML = 'Delete' + deleteEmoji;
     deleteBtn.ariaLabel = "Delete";
 
     // append buttons to controls
@@ -221,7 +225,7 @@ addBtn.addEventListener('click', (e) => {
         if (!isEditing) {
             isEditing = true;
             // change button to save emoji
-            editBtn.innerHTML = String.fromCodePoint(0x1F4CC);
+            editBtn.innerHTML = 'Save' + saveEmoji;
             // set aria-label to 'Save'
             editBtn.setAttribute('aria-label', 'Save');
             // enable input editing
@@ -232,7 +236,7 @@ addBtn.addEventListener('click', (e) => {
             // save task
             isEditing = false;
             // reset button to edit emoji
-            editBtn.innerHTML = String.fromCodePoint(0x1F58B);
+            editBtn.innerHTML = 'Edit' + editEmoji;
             // reset aria-label to 'Edit'
             editBtn.setAttribute('aria-label', 'Edit');
             // make new input value readonly
