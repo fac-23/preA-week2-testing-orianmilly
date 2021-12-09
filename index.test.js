@@ -1,5 +1,6 @@
 // grab the input to assign and remove value in the tests
 let taskNew = document.querySelector('input#task');
+
 // Test for adding a new task to the to-do list
 
 test("Submitting a new task adds it to the list", () => {
@@ -7,41 +8,65 @@ test("Submitting a new task adds it to the list", () => {
     const before = taskList.childElementCount;
     // give the input a value otherwise new task will not be created
     taskNew.value = "New task";
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
+    // click add button
     addBtn.click();
     const after = taskList.childElementCount;
     equal(after, before + 1)
-    const taskCard = document.querySelector(".task-card")
+    const taskCard = document.querySelector(".task-card");
     taskCard.remove();
     // reset value to empty string
     taskNew.value = ""; 
-    })
+})
 
+test("Submitting a new task adds the user input to the list", () => {
+    // add a value to the user input
+    taskNew.value = 'I\'m a user input!';
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
+    // click add button
+    addBtn.click();
+    // grab the created task card
+    const taskCard = document.querySelector('.task-card');
+    const newTaskValue = taskCard.querySelector('.task-new').value;
+    // check the value of the new task is equal to the user input string
+    equal(newTaskValue, 'I\'m a user input!', 'New task value is equal to user input string');
+    // remove the newly created task
+    taskCard.remove();
+    // reset value to empty string
+    taskNew.value = "";
+})
 
 // Test for ticking completed items off the to-do list
 
 test("Checking an entry marks it as complete", () => {
     taskNew.value = "New task";
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
     // Click add button
-        addBtn.click(); 
+    addBtn.click(); 
     // grab checkbox from local scope
-        const checkbox = document.querySelector("#checkbox")
+    const checkbox = document.querySelector("#checkbox")
     // click checkbox 
-        checkbox.click();
+    checkbox.click();
     // grab task card from add btn
-        const taskCard = document.querySelector(".task-card")
+    const taskCard = document.querySelector(".task-card")
     //  completed div contains completed-task class
-        const taskCardDone = taskCard.classList.contains("completed-task")
+    const taskCardDone = taskCard.classList.contains("completed-task")
     // equal function checks that the completed task is true
-        equal(taskCardDone, true, `completed tasks have a class of 'completed-task'`)
-        taskCard.remove();
-        // reset value to empty string
-        taskNew.value = ""; 
-    });
+    equal(taskCardDone, true, `completed tasks have a class of 'completed-task'`)
+    taskCard.remove();
+    // reset value to empty string
+    taskNew.value = ""; 
+});
 
 // test for deleting an item from the to-do list
 test("Deleting an item removes it from the list", () => {
     // enter value to add new task
     taskNew.value = "New task";
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
     // click add button to create task card 
     addBtn.click();
     // grab the task card that was created
@@ -61,6 +86,8 @@ test("Deleting an item removes it from the list", () => {
 // test for edit button
 test("Clicking the edit button enables editing", () => {
     taskNew.value = "New task";
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
     // add new task
     addBtn.click();
     // click edit button
@@ -80,6 +107,8 @@ test("Clicking the edit button enables editing", () => {
 // test for toggling a button to hide completed items
 test("Toggling the filter hides completed tasks from the list", () => {
     taskNew.value = "New task";
+    // grab add button
+    const addBtn = document.querySelector('#add-btn');
     // add new task
     addBtn.click();
     // grab task card
@@ -92,9 +121,8 @@ test("Toggling the filter hides completed tasks from the list", () => {
     filterBtn.click();
     // if the item has a classlist of 'completed-task' it should be hidden
     // check task card contain a classlist of 'completed-task' and a hidden attribute of true
-    equal((taskCard.classList.contains('completed-task') && taskCard.style.display === "none"), true,'completed tasks are hidden')
+    equal((taskCard.classList.contains('completed-task') && taskCard.style.display === "none"), true,'completed tasks are hidden');
+    filterBtn.click();
     taskCard.remove();
     taskNew.value = "";
-    filterBtn.click();
-    filterBtn.textContent = "Hide completed tasks";
 });
